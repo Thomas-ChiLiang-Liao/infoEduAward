@@ -36,28 +36,30 @@ else {
 		<?php menu('themeList'); ?> 
     <div class="container-fluid">
       <div class="row mt-5">
-        <div class="col-10 offset-1 col-md-8 offset-md-2">
+        <div class="col-12 col-md-10 offset-md-1 col-xl-8 offset-xl-2">
           <div class="card mx-xl-5">
             <div class="card-header bg-primary text-white text-center">
               <h4>個人組報名主題列表</h4>
             </div>
             <div class="card-body">
-              <table class="table table-striped table-hover">
+              <table class="table table-striped table-hover table-bordered">
                 <thead>
-                  <tr>
-                    <td>編號</td>
-                    <td>主題</td>
-                    <td>報名表</td>
-                    <td>成果資料</td>
+                  <tr class="bg-secondary text-center text-white">
+                    <th width="10%" class="align-middle">編號</th>
+                    <th class="align-middle">主題</th>
+                    <th width="15%" class="align-middle">評選類別</th>
+                    <th width="10%" class="align-middle">報名表</th>
+                    <th width="10%" class="align-middle">成果資料</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php if ( $personStatement->rowCount() == 0 ) { ?>
                   <tr><td colspan="4">尚無報名資料</td></tr>
                   <?php } else { while ($person = $personStatement->fetch(PDO::FETCH_ASSOC)) { ?>
-                  <tr>
+                  <tr class="text-center">
                     <td>person<?php echo $person['id']; ?></td>
-                    <td><?php echo $person['theme']; ?></td>
+                    <td class="text-left"><?php echo $person['theme']; ?></td>
+                    <td><?php echo $person['cat']; ?></td>
                     <td class="font-weight-bold text-<?php echo ( file_exists("../files/person$person[id]_regForm.pdf") ? 'success' : 'warning' ); ?>"><?php echo ( file_exists("../files/person$person[id]_regForm.pdf") ? '已上傳' : '未上傳' ); ?></td>
                     <td class="font-weight-bold text-<?php echo ( file_exists("../files/person$person[id]_achievement.pdf") ? 'success' : 'warning' );?>"><?php echo ( file_exists("../files/person$person[id]_achievement.pdf") ? '已上傳' : '未上傳' ) ;?></td>
                   </tr> 
@@ -71,22 +73,24 @@ else {
               <h4>團體組報名主題列表</h4>
             </div>
             <div class="card-body">
-              <table class="table table-striped table-hover">
+              <table class="table table-striped table-hover table-bordered">
                 <thead>
-                  <tr>
-                    <td>編號</td>
-                    <td>主題</td>
-                    <td>報名表</td>
-                    <td>成果資料</td>
+                  <tr class="bg-secondary text-center text-white">
+                    <th width="10%" class="align-middle">編號</th>
+                    <th class="align-middle">主題</th>
+                    <th width="15%" class="align-middle">評選類別</th>
+                    <th width="10%" class="align-middle">報名表</th>
+                    <th width="10%" class="align-middle">成果資料</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php if ( $teamStatement->rowCount() == 0 ) { ?>
                   <tr><td colspan="4">尚無報名資料</td></tr>
                   <?php } else { while ($team = $teamStatement->fetch(PDO::FETCH_ASSOC)) { ?>
-                  <tr>
+                  <tr class="text-center">
                     <td>team<?php echo $team['id']; ?></td>
-                    <td><?php echo $team['theme']; ?></td>
+                    <td class="text-left"><?php echo $team['theme']; ?></td>
+                    <td><?php echo $team['cat']; ?></td>
                     <td class="font-weight-bold text-<?php echo ( file_exists("../files/team$team[id]_regForm.pdf") ? 'success' : 'warning' ); ?>"><?php echo ( file_exists("../files/team$team[id]_regForm.pdf") ? '已上傳' : '未上傳' ); ?></td>
                     <td class="font-weight-bold text-<?php echo ( file_exists("../files/team$team[id]_achievement.pdf") ? 'success' : 'warning' );?>"><?php echo ( file_exists("../files/team$team[id]_achievement.pdf") ? '已上傳' : '未上傳' ) ;?></td>
                   </tr> 
