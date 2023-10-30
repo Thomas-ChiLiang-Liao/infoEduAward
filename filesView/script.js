@@ -13,8 +13,7 @@ function deleteFile(pathFilename) {
 
 function getFilename(obj) {
   let fileName = obj.value.split("\\").pop();
-  let fileType = fileName.split(".").pop().toLowerCase();
-  if (fileType == 'pdf') {
+  if ( /\.[Pp][Dd][Ff]$/.test(fileName) ) {
     obj.nextElementSibling.innerHTML = fileName;
     obj.classList.add("selected");
   } else {
